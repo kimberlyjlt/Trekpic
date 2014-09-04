@@ -13,7 +13,7 @@
   <tbody>
     <% @trips.each do |trip| %>
       <tr>
-        <td><%= trip.user_id %></td>
+        <td><%= trip.user.name %></td>
         <td><%= trip.title %></td>
         <td><%= trip.description %></td>
         <td><%= link_to 'Show', trip %></td>
