@@ -16,8 +16,8 @@
   <tbody>
     <% @photos.each do |photo| %>
       <tr>
-        <td><%= photo.user_id %></td>
-        <td><%= photo.trip_id %></td>
+        <td><%= photo.user.name %></td>
+        <td><%= photo.trip.title %></td>
         <td><%= photo.lat %></td>
         <td><%= photo.lng %></td>
         <td><%= photo.title %></td>

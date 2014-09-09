@@ -2,12 +2,12 @@
 
 <p>
   <strong>User:</strong>
-  <%= @photo.user_id %>
+   <%= @photo.user.name %>
 </p>
 
 <p>
   <strong>Trip:</strong>
-  <%= @photo.trip_id %>
+  <%= @photo.trip.title %>
 </p>
 
 <p>
@@ -29,6 +29,7 @@
   <strong>Description:</strong>
   <%= @photo.description %>
 </p>
+
 
 <p>
   <%= image_tag @photo.picture.url %>

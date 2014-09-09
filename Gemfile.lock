@@ -143,6 +143,7 @@ DEPENDENCIES
   devise
   jbuilder (~> 2.0)
   jquery-rails
+  nokogiri
   paperclip (~> 4.2.0)
   rails (= 4.1.4)
   sass-rails (~> 4.0.3)

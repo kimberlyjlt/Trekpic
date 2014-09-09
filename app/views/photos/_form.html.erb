@@ -10,9 +10,11 @@
       </ul>
     </div>
   <% end %>
+
+
   <div class="field">
     <%= f.label :trip_id %><br>
-    <%= f.number_field :trip_id %>
+    <%= f.select :trip_id, options_for_select(Trip.where(user_id: "#{current_user.id}").collect{|t| [ t.title, t.id ]}), {include_blank: :true}%>
   </div>
   <div class="field">
     <%= f.label :lat %><br>
