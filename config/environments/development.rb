@@ -36,4 +36,14 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
 Paperclip.options[:command_path] = "/usr/local/bin/"
+
+config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_credentials => {
+      :bucket => "trekpic",
+      :access_key_id => "AKIAIVURUH7E7IJOR3EQ",
+      :secret_access_key => "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"
+    }
+  }
 end
+

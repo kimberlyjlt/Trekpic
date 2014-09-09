@@ -83,9 +83,9 @@ Rails.application.configure do
   config.paperclip_defaults = {
     :storage => :s3,
     :s3_credentials => {
-      :bucket => ENV['trekpic'],
-      :access_key_id => ENV['AKIAIVURUH7E7IJOR3EQ'],
-      :secret_access_key => ENV['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']
+      :bucket => ENV['S3 BUCKET NAME'],
+      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
     }
   }
 end
