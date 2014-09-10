@@ -10,8 +10,10 @@
       </ul>
     </div>
   <% end %>
-
-
+  <div class="field">
+    <%= f.label :picture %><br />
+    <%= f.file_field :picture %>
+  </div>
   <div class="field">
     <%= f.label :trip_id %><br>
     <%= f.select :trip_id, options_for_select(Trip.where(user_id: "#{current_user.id}").collect{|t| [ t.title, t.id ]}), {include_blank: :true}%>

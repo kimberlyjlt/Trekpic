@@ -32,7 +32,7 @@
 
 
 <p>
-  <%= image_tag @photo.picture.url %>
+  <%= image_tag @photo.picture.url(:medium) %>
 </p>
 
 <%= link_to 'Edit', edit_photo_path(@photo) %> |

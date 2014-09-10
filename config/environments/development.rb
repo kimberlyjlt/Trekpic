@@ -42,7 +42,8 @@ config.paperclip_defaults = {
     :s3_credentials => {
       :bucket => "trekpic",
       :access_key_id => "AKIAIVURUH7E7IJOR3EQ",
-      :secret_access_key => "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"
+      :secret_access_key => "wDABt92lFl62jkA7D6E1sqHrtYSMYaK1KpnPhk/j",
+      s3_host_name: 's3-us-west-2.amazonaws.com'
     }
   }
 end
