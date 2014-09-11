@@ -1,5 +1,11 @@
 <p id="notice"><%= notice %></p>
 
+<div class="pull-left" style="display:inline; margin-right:50px;">
+
+<p>
+  <%= image_tag @photo.picture.url(:medium) %>
+</p>
+
 <p>
   <strong>User:</strong>
    <%= @photo.user.name %>
@@ -30,10 +36,40 @@
   <%= @photo.description %>
 </p>
 
-
 <p>
-  <%= image_tag @photo.picture.url(:medium) %>
-</p>
-
 <%= link_to 'Edit', edit_photo_path(@photo) %> |
 <%= link_to 'Back', photos_path %>
+</p>
+</div>
+<script type="text/javascript">
+      function initialize() {
+        var mapOptions = {
+          center: new google.maps.LatLng(33.755, -84.390),
+          zoom: 12
+        };
+        var map = new google.maps.Map(document.getElementById("map-canvas"),
+            mapOptions);
+        
+          marker = new google.maps.Marker({
+                position: new google.maps.LatLng(<%= @photo.lat %>, <%= @photo.lng %>),
+                map: map
+            });
+          
+
+          google.maps.event.addListener(marker, 'click', (function(marker) {
+
+                return function() {
+                  infowindow.open(map, marker);
+                }
+              })(marker));
+
+      }
+     
+      google.maps.event.addDomListener(window, 'load', initialize);
+
+
+
+
+</script>
+
+ <div id="map-canvas"/>

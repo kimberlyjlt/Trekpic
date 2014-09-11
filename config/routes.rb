@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   get 'welcome/index'
 
+  get '/trips/:id/photos', to: 'trips#map'
+
   resources :trips
 
   resources :photos

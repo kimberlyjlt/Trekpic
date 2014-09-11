@@ -7,6 +7,12 @@ class TripsController < ApplicationController
     @trips = Trip.all
   end
 
+  def map
+    @trips = Trip.find(params[:id]).photos
+    
+    render json: @trips
+  end
+
   # GET /trips/1
   # GET /trips/1.json
   def show

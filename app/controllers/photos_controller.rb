@@ -13,6 +13,11 @@ class PhotosController < ApplicationController
   def show
   end
 
+  def map
+
+    render json: @photos
+  end
+
   # GET /photos/new
   def new
     @photo = Photo.new
