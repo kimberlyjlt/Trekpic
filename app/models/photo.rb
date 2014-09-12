@@ -14,6 +14,9 @@ class Photo < ActiveRecord::Base
   	:medium => "300x300>", 
   	:thumb => "100x100>" }, 
   	:default_url => "/images/:style/missing.png"
+    :storage => :s3,
+    :bucket => 'trekpic',
+    :s3_credentials => S3_CREDENTIALS
   	
   validates_attachment_content_type :picture, :content_type => /\Aimage\/.*\Z/
 
