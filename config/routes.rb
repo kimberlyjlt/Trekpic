@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root 'welcome#about'
+  root 'welcome#index'
 
   get '/profile', :to => "profile#show"
 

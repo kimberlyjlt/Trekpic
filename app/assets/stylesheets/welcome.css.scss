@@ -2,18 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-h1   {color:white}
-h2   {color:#3B0B0B}
+h1   {color:white !important}
+h2   {color:white !important}
 h3   {color:white}
 p    {
     margin-right:10px;
     margin-bottom: 10px;
-}
-
-body{
-    background-image: url('http://www.highresolution-wallpapers.com/walls/high_res_sea_shore_in_thailand_and_canoe-wide.jpg');
-    background-repeat:no-repeat;
-    background-size:cover;
 }
 
 div.transbox {
