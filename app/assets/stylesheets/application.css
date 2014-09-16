@@ -20,21 +20,3 @@ body {
 .alert {
   margin-top: 10px;
 }
-
-section,
-aside {
-  margin: 10px;
-}
-section {
-  float: left;
-  width: 340px;
-}
-aside {
-  float: right;
-  width: 158px;
-}
-
-h2.ontop {
-  position: relative;
-  top: 4.7em;
-}
