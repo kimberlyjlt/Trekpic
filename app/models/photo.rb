@@ -2,6 +2,8 @@ class Photo < ActiveRecord::Base
 	belongs_to :trip
 	belongs_to :user
 
+  geocoded_by :address
+  after_validation :geocode
 
   has_attached_file :picture, photos: {
 	thumb: '100x100>',
@@ -19,10 +21,10 @@ class Photo < ActiveRecord::Base
 
   validates_with AttachmentSizeValidator, :attributes => :picture, :less_than => 10.megabytes
 
-
+=begin
 validates :latitude, numericality: { greater_than_or_equal_to: -90,  \
   less_than_or_equal_to: 90 }
 validates :longitude, numericality: { greater_than_or_equal_to: -180,  \
   less_than_or_equal_to: 180 }
-
+=end
 end
