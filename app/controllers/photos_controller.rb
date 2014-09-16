@@ -14,7 +14,6 @@ class PhotosController < ApplicationController
   end
 
   def map
-
     render json: @photos
   end
 
@@ -75,6 +74,6 @@ class PhotosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def photo_params
-      params.require(:photo).permit(:user_id, :trip_id, :lat, :lng, :title, :description, :picture)
+      params.require(:photo).permit(:user_id, :trip_id, :latitude, :longitude, :title, :description, :picture)
     end
 end

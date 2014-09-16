@@ -18,12 +18,12 @@
 
 <p>
   <strong>Latitude:</strong>
-  <%= @photo.lat %>
+  <%= @photo.latitude %>
 </p>
 
 <p>
-  <strong>Longitude:</strong>x
-  <%= @photo.lng %>
+  <strong>Longitude:</strong>
+  <%= @photo.longitude %>
 </p>
 
 <p>
@@ -51,7 +51,7 @@
             mapOptions);
         
           marker = new google.maps.Marker({
-                position: new google.maps.LatLng(<%= @photo.lat %>, <%= @photo.lng %>),
+                position: new google.maps.LatLng(<%= @photo.latitude %>, <%= @photo.longitude %>),
                 map: map
             });
           

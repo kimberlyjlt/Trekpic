@@ -51,7 +51,7 @@
         $.each(data, function (index){
         
           marker = new google.maps.Marker({
-                position: new google.maps.LatLng(data[index].lat, data[index].lng),
+                position: new google.maps.LatLng(data[index].latitude, data[index].longitude),
                 map: map
             });
 
