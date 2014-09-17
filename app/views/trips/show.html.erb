@@ -56,8 +56,16 @@
       google.maps.event.addDomListener(window, 'page:load', initialize);
       
 </script>
+<% if @trip.photos.count == 0 %>
+<div id="blank-map">
+  <div id="blank-map-button">
+    <a href="<%= new_photo_path %>"><button class="btn btn-success btn-lg">Add your first photo!</button></a>
+  </div>
+</div>
+<% else %>
 <div id="map-canvas">
 </div>
+<% end %>
 <div style="position: absolute; top: 65%; color: #FFF !important;">
   <div class="page-header">
     <h2><strong><%= @trip.title %>

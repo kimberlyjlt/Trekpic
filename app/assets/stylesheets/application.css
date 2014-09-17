@@ -25,3 +25,28 @@ html, html a {
     -webkit-font-smoothing: antialiased;
     text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
 }
+
+#map-canvas {
+	height: 60%;
+	min-width: 300px;
+	position: absolute;
+	left:0;
+	right:0;
+	margin-top:-10px;
+}
+
+#blank-map {
+	height: 60%;
+	min-width: 300px;
+	position: absolute;
+	left:0;
+	right:0;
+	margin-top:-10px;
+}
+
+#blank-map-button {
+    position: absolute;
+    left:50%;
+    top:50%;
+    margin: auto auto auto -100px;
+}

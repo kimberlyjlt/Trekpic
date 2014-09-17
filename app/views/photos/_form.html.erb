@@ -10,27 +10,29 @@
       </ul>
     </div>
   <% end %>
-  <div class="field">
+<div class="col-md-3">
+  <div class="form-group">
     <%= f.label :picture %><br />
-    <%= f.file_field :picture %>
+    <%= f.file_field :picture, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :trip_id %><br>
-    <%= f.select :trip_id, options_for_select(Trip.where(user_id: "#{current_user.id}").collect{|t| [ t.title, t.id ]}), {include_blank: :true}%>
+    <%= f.select :trip_id, options_for_select(Trip.where(user_id: "#{current_user.id}").collect{|t| [ t.title, t.id ]}), {include_blank: :true}, class: 'form-control'%>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :address %><br>
-    <%= f.text_field :address %>
+    <%= f.text_field :address, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <%= f.text_area :description, class: 'form-control' %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.button "Add Photo", class: 'btn btn-primary' %>
   </div>
+</div>
 <% end %>

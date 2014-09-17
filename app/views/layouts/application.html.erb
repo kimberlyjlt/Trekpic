@@ -58,6 +58,7 @@
   </div>
 </nav>
 <div class="container">
+<div class="col-md-4" style="position: absolute; z-index: 10000; right: 100px;">
   <% flash.each do |name, msg| %>
     <% if msg.is_a?(String) %>
       <div class="alert alert-<%= name.to_s == 'notice' ? 'success' : 'danger' %>" role="alert">
@@ -66,6 +67,7 @@
       </div>
     <% end %>
   <% end %>
+</div>
 <%=yield%>
 </div>
 </body>

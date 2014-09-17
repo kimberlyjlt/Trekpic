@@ -24,7 +24,9 @@ class Photo < ActiveRecord::Base
   def picture_url
     picture.url(:medium)
   end
-
+  
+  extend FriendlyId
+    friendly_id :title, use: :slugged
 =begin
 validates :latitude, numericality: { greater_than_or_equal_to: -90,  \
   less_than_or_equal_to: 90 }

@@ -1,6 +1,6 @@
 <h1>Listing photos</h1>
 
-<table>
+<table class="table table-hover">
   <thead>
     <tr>
       <th>User</th>
@@ -24,14 +24,15 @@
         <td><%= photo.longitude %></td>
         <td><%= photo.title %></td>
         <td><%= photo.description %></td>
-        <td><%= link_to 'Show', photo %></td>
-        <td><%= link_to 'Edit', edit_photo_path(photo) %></td>
-        <td><%= link_to 'Destroy', photo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', photo %>
+          <% if signed_in? && current_user == photo.user %>
+            <%= link_to 'Edit', edit_photo_path(photo) %>
+            <%= link_to 'Destroy', photo, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Photo', new_photo_path %>
+<a href="<%= new_photo_path %>"><button class="btn btn-success btn-lg">Add a new photo</button></a>

@@ -7,5 +7,8 @@ class Trip < ActiveRecord::Base
   def picture_url
     photo.picture.url(:medium)
   end
-	
+
+  extend FriendlyId
+  	friendly_id :title, use: :slugged
+
 end
