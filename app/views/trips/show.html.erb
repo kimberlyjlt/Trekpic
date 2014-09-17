@@ -1,3 +1,8 @@
+<style type="text/css">
+  body {
+    background: #343434; 
+  }
+</style>
 <script type="text/javascript">
       function initialize() {
         var mapOptions = {
@@ -53,17 +58,19 @@
 </script>
 <div id="map-canvas">
 </div>
-<div style="position: absolute; top: 65%;">
-<div class="page-header">
-<h2><strong><%= @trip.title %><small> by <%= @trip.user.name %></small></strong></h2>
-</div>
-<div class="container">
-<p>
-  <%= @trip.description %>
-</p>
-<p>
-<%= link_to 'Edit', edit_trip_path(@trip) %> |
-<%= link_to 'Back', trips_path %>
-</p>
-</div>
+<div style="position: absolute; top: 65%; color: #FFF !important;">
+  <div class="page-header">
+    <h2><strong><%= @trip.title %>
+      <small> by <%= @trip.user.name %>
+        <% if signed_in? && current_user == @trip.user %>
+            <small><%= link_to 'Edit', edit_trip_path(@trip) %></small>
+        <% end %>
+      </small>
+    </strong></h2>
+  </div>
+  <div class="container">
+    <p>
+      <%= @trip.description %>
+    </p>
+  </div>
 </div>

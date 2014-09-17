@@ -1,3 +1,8 @@
+<style type="text/css">
+  body {
+    background: #343434; 
+  }
+</style>
 <script type="text/javascript">
       function initialize() {
         var mapOptions = {
@@ -51,37 +56,26 @@
 </script>
 <div id="map-canvas">
 </div>
-<div class="container" style="position: absolute; top: 67%;">
-<div class="pull-left">
-  <h2><strong><%= @photo.title %><small> by <%= @photo.user.name %></small></strong></h2>
-</div>
-<div class="container pull-left">
-<p>
-  <strong>Trip:</strong>
-  <%= @photo.trip.title %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @photo.address %>
-</p>
-
-<p>
-  <strong>Latitude:</strong>
-  <%= @photo.latitude %>
-</p>
-
-<p>
-  <strong>Longitude:</strong>
-  <%= @photo.longitude %>
-</p>
-<p>
-  <strong>Description:</strong>
-  <%= @photo.description %>
-</p>
-<p>
-  <%= link_to 'Edit', edit_photo_path(@photo) %> |
-  <%= link_to 'Back', photos_path %>
-</p>
-</div>
+<div style="position: absolute; top: 65%; color: #FFF !important;">
+  <div class="page-header">
+    <h2><strong><%= @photo.title %>
+      <small> by <%= @photo.user.name %>
+        <% if signed_in? && current_user.id == @photo.user.id %>
+            <small><%= link_to 'Edit', edit_photo_path(@photo) %></small>
+        <% end %>
+      </small>
+    </strong></h2>
+  </div>
+  <div class="container">
+    <p>
+      <strong></strong>
+      <h4><a href="/trips/<%= @photo.trip.id %>"><%= @photo.trip.title %></a></h4>
+    </p>
+    <p>
+      <%= @photo.address %>
+    </p>
+    <p style="color:#999;">
+      <%= @photo.description %>
+    </p>
+  </div>
 </div>
