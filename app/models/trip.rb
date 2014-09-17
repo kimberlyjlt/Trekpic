@@ -3,5 +3,9 @@ class Trip < ActiveRecord::Base
 	has_many :photos
 
 	validates :user_id, presence: true
+
+  def picture_url
+    photo.picture.url(:medium)
+  end
 	
 end

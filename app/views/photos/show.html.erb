@@ -1,16 +1,58 @@
-<p id="notice"><%= notice %></p>
+<script type="text/javascript">
+      function initialize() {
+        var mapOptions = {
+          center: new google.maps.LatLng(33.755, -84.390),
+          zoom: 12
+        };
+        var map = new google.maps.Map(document.getElementById("map-canvas"),
+            mapOptions);
+        
+        $.getJSON("/photos/<%=@photo.id%>/url", function(data){
 
-<div class="pull-left" style="display:inline; margin-right:50px;">
+    // console.log(data);
 
-<p>
-  <%= image_tag @photo.picture.url(:medium) %>
-</p>
+          marker = new google.maps.Marker({
+                position: new google.maps.LatLng(data.latitude, data.longitude),
+                map: map
+            });
 
-<p>
-  <strong>User:</strong>
-   <%= @photo.user.name %>
-</p>
+          var info_window_content = get_infowindow_content(data.title, data.picture_url);
 
+          var infowindow = new google.maps.InfoWindow({
+                content: info_window_content
+            });
+          
+
+          google.maps.event.addListener(marker, 'click', (function(marker) {
+
+                return function() {
+                  infowindow.setContent(info_window_content);
+                  infowindow.open(map, marker);
+                }
+              })(marker));
+
+        
+        });
+           
+
+      } // this is the end of our function. WELCOME TO JAVASCRIPT YOU GUYS
+      
+    function get_infowindow_content(title, picture_url){
+        return "<b>"+title+"</b><br /><img src="+picture_url+" />";
+      }
+     
+
+      google.maps.event.addDomListener(window, 'load', initialize);
+      google.maps.event.addDomListener(window, 'page:load', initialize);
+
+</script>
+<div id="map-canvas">
+</div>
+<div class="container" style="position: absolute; top: 67%;">
+<div class="pull-left">
+  <h2><strong><%= @photo.title %><small> by <%= @photo.user.name %></small></strong></h2>
+</div>
+<div class="container pull-left">
 <p>
   <strong>Trip:</strong>
   <%= @photo.trip.title %>
@@ -21,7 +63,6 @@
   <%= @photo.address %>
 </p>
 
-
 <p>
   <strong>Latitude:</strong>
   <%= @photo.latitude %>
@@ -31,51 +72,13 @@
   <strong>Longitude:</strong>
   <%= @photo.longitude %>
 </p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @photo.title %>
-</p>
-
 <p>
   <strong>Description:</strong>
   <%= @photo.description %>
 </p>
-
 <p>
-<%= link_to 'Edit', edit_photo_path(@photo) %> |
-<%= link_to 'Back', photos_path %>
+  <%= link_to 'Edit', edit_photo_path(@photo) %> |
+  <%= link_to 'Back', photos_path %>
 </p>
 </div>
-<script type="text/javascript">
-      function initialize() {
-        var mapOptions = {
-          center: new google.maps.LatLng(33.755, -84.390),
-          zoom: 12
-        };
-        var map = new google.maps.Map(document.getElementById("map-canvas"),
-            mapOptions);
-        
-          marker = new google.maps.Marker({
-                position: new google.maps.LatLng(<%= @photo.latitude %>, <%= @photo.longitude %>),
-                map: map
-            });
-          
-
-          google.maps.event.addListener(marker, 'click', (function(marker) {
-
-                return function() {
-                  infowindow.open(map, marker);
-                }
-              })(marker));
-
-      }
-     
-      google.maps.event.addDomListener(window, 'load', initialize);
-
-
-
-
-</script>
-
- <div id="map-canvas"/>
+</div>

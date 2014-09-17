@@ -9,8 +9,7 @@ class TripsController < ApplicationController
 
   def map
     @trips = Trip.find(params[:id]).photos
-    
-    render json: @trips
+    render json: @trips.to_json(:methods => [:picture_url])
   end
 
   # GET /trips/1

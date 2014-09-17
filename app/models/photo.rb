@@ -21,6 +21,10 @@ class Photo < ActiveRecord::Base
 
   validates_with AttachmentSizeValidator, :attributes => :picture, :less_than => 10.megabytes
 
+  def picture_url
+    picture.url(:medium)
+  end
+
 =begin
 validates :latitude, numericality: { greater_than_or_equal_to: -90,  \
   less_than_or_equal_to: 90 }

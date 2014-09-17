@@ -1,39 +1,4 @@
-<p id="notice"><%= notice %></p>
-
-<div class="pull-left" style="display:inline; margin-right:50px;">
-
-<p>
-  <strong>User:</strong>
-  <%= @trip.user.name %>
-</p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @trip.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @trip.description %>
-</p>
-
-<p>
-  <strong>Photos:</strong>
-</p>
-
-<p>
-  <% @trip.photos.each do |photo| %>
-  	<p><%= image_tag photo.picture.url(:medium) %></p>
-  <% end %>
-</p>
-
-<p>
-<%= link_to 'Edit', edit_trip_path(@trip) %> |
-<%= link_to 'Back', trips_path %>
-</p>
-
-</div>
-    <script type="text/javascript">
+<script type="text/javascript">
       function initialize() {
         var mapOptions = {
           center: new google.maps.LatLng(33.755, -84.390),
@@ -44,9 +9,7 @@
 
    $.getJSON("/trips/<%=@trip.id%>/photos", function(data){
 
-   // console.log(data);
-
-
+    // console.log(data);
 
         $.each(data, function (index){
         
@@ -55,7 +18,7 @@
                 map: map
             });
 
-          var info_window_content = get_infowindow_content(data[index].title);
+          var info_window_content = get_infowindow_content(data[index].title, data[index].picture_url);
 
           var infowindow = new google.maps.InfoWindow({
                 content: info_window_content
@@ -70,23 +33,34 @@
                 }
               })(marker, index));
 
-        
         });
            
         });
 
       } // this is the end of our function. WELCOME TO JAVASCRIPT YOU GUYS
       
-    function get_infowindow_content(title){
-        return "<b>"+title+"</b>";
+    function get_infowindow_content(title, picture_url){
+        return "<b>"+title+"</b><br /><img src="+picture_url+" />";
       }
      
 
       google.maps.event.addDomListener(window, 'load', initialize);
-
-
-
-
+      google.maps.event.addDomListener(window, 'page:load', initialize);
+      
 </script>
-
- <div id="map-canvas"/>
+<div id="map-canvas">
+</div>
+<div style="position: absolute; top: 65%;">
+<div class="page-header">
+<h2><strong><%= @trip.title %><small> by <%= @trip.user.name %></small></strong></h2>
+</div>
+<div class="container">
+<p>
+  <%= @trip.description %>
+</p>
+<p>
+<%= link_to 'Edit', edit_trip_path(@trip) %> |
+<%= link_to 'Back', trips_path %>
+</p>
+</div>
+</div>

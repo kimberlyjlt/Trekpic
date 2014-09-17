@@ -16,6 +16,10 @@ class PhotosController < ApplicationController
     render json: @photos
   end
 
+  def url
+    @photos = Photo.find(params[:id])
+    render json: @photos.to_json(:methods => [:picture_url])
+  end
   # GET /photos/new
   def new
     @photo = Photo.new

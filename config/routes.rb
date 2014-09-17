@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   get '/trips/:id/photos', to: 'trips#map'
 
+  get '/photos/:id/url', to: 'photos#url'
+
   resources :trips
 
   resources :photos
