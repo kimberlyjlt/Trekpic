@@ -1,11 +1,12 @@
 <script type="text/javascript">
       function initialize() {
         var mapOptions = {
-          center: new google.maps.LatLng(33.755, -84.390),
           zoom: 12
         };
         var map = new google.maps.Map(document.getElementById("map-canvas"),
             mapOptions);
+
+        var bounds = new google.maps.LatLngBounds();
 
    $.getJSON("/trips/<%=@trip.id%>/photos", function(data){
 
@@ -23,7 +24,9 @@
           var infowindow = new google.maps.InfoWindow({
                 content: info_window_content
             });
-          
+
+          var pos = new google.maps.LatLng(data[index].latitude, data[index].longitude);
+          bounds.extend(pos);
 
           google.maps.event.addListener(marker, 'click', (function(marker, index) {
 
@@ -32,7 +35,7 @@
                   infowindow.open(map, marker);
                 }
               })(marker, index));
-
+            map.fitBounds(bounds);
         });
            
         });
