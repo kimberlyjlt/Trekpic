@@ -1,2 +1,17 @@
-<h1>Profiles#show</h1>
-<p>Find me in app/views/profiles/show.html.erb</p>
+<div class="page-header">
+<h1><%= @user.name %>'s Trips</h1>
+</div>
+<% if @trips %>
+	<% @trips.each do |trip| %>
+		<div class="col-md-3" style="margin-bottom: 20px;">
+            <img class="img-rounded" src="<%= trip.photos.first.picture.url(:square) %>">
+            <div class="hover-cap caption">
+              <div class="bg-dark">
+              	<h3><%= link_to "#{trip.title}", trip_path(trip) %></h3>
+				<small><%= time_ago_in_words(trip.created_at)%> ago - <%= trip.photos.count %> picture<%if trip.photos.count > 1 %>s<% end %></small>
+				</h3>
+              </div>
+            </div>
+          </div>
+	<% end %>
+<% end %>

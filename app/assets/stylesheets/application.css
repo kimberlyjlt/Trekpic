@@ -50,3 +50,29 @@ html, html a {
     top:50%;
     margin: auto auto auto -100px;
 }
+
+.bg-dark {
+	color:#fff;
+	background-color:rgba(0,0,0,0.9);
+}
+
+.caption {
+	position: relative;
+	bottom: 210px;
+	width: 200px;
+	text-align: center;
+}
+
+.hover-cap {
+    display: none;
+}
+
+.caption:hover {
+    display: block;
+    margin-bottom: -76px;
+}
+
+img:hover + .caption{
+    display: block;
+    margin-bottom: -76px;
+}
